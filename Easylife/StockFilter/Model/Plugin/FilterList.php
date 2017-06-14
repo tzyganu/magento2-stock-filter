@@ -45,13 +45,13 @@ class FilterList
     /**
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
-     * @param \Magento\CatalogInventory\Model\Resource\Stock\Status $stockResource
+     * @param \Magento\CatalogInventory\Model\ResourceModel\Stock\Status $stockResource
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\ObjectManagerInterface $objectManager,
-        \Magento\CatalogInventory\Model\Resource\Stock\Status $stockResource,
+        \Magento\CatalogInventory\Model\ResourceModel\Stock\Status $stockResource,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     ) {
         $this->_storeManager = $storeManager;
