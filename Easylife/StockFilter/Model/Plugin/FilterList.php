@@ -45,13 +45,13 @@ class FilterList
     /**
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
-     * @param \Magento\CatalogInventory\Model\Resource\Stock\Status $stockResource
+     * @param \Magento\CatalogInventory\Model\ResourceModel\Stock\Status $stockResource
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\ObjectManagerInterface $objectManager,
-        \Magento\CatalogInventory\Model\Resource\Stock\Status $stockResource,
+        \Magento\CatalogInventory\Model\ResourceModel\Stock\Status $stockResource,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     ) {
         $this->_storeManager = $storeManager;
@@ -163,12 +163,12 @@ class FilterList
     {
         $from = $select->getPart(\Zend_Db_Select::FROM);
         if (!isset($from['stock_status_index'])) {
-            $joinCondition = $this->_stockResource->getReadConnection()->quoteInto(
+            $joinCondition = $this->_stockResource->getConnection()->select()->quoteInto(
                 'e.entity_id = stock_status_index.product_id' . ' AND stock_status_index.website_id = ?',
                 $websiteId
             );
 
-            $joinCondition .= $this->_stockResource->getReadConnection()->quoteInto(
+            $joinCondition .= $this->_stockResource->getConnection()->select()->quoteInto(
                 ' AND stock_status_index.stock_id = ?',
                 \Magento\CatalogInventory\Model\Stock::DEFAULT_STOCK_ID
             );
