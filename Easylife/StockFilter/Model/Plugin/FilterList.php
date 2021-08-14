@@ -89,7 +89,7 @@ class FilterList
         if ($this->isEnabled()) {
             $collection = $layer->getProductCollection();
             $websiteId = $this->_storeManager->getStore($collection->getStoreId())->getWebsiteId();
-//            $this->_addStockStatusToSelect($collection->getSelect(), $websiteId);
+            $this->_addStockStatusToSelect($collection->getSelect(), $websiteId);
         }
         return array($layer);
     }
